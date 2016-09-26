@@ -1,4 +1,4 @@
-package com.wondersgroup.pcf.sys.model.bo;
+package com.wondersgroup.pcf.sysmanager.model.bo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

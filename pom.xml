@@ -9,6 +9,7 @@
   <url>http://maven.apache.org</url>
   
   <properties>
+    <javaee.version>7.0</javaee.version>
     <struts.version>2.3.28</struts.version>
     <spring.version>4.1.1.RELEASE</spring.version>
     <hibernate.version>4.3.10.Final</hibernate.version>
@@ -83,6 +84,14 @@
       <groupId>org.jadira.usertype</groupId>
       <artifactId>usertype.core</artifactId>
       <version>3.0.0.CR1</version>
+    </dependency>
+
+    <!-- Servlet/Container -->
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+      <version>${javaee.version}</version>
+      <scope>provided</scope>
     </dependency>
 
   </dependencies>
