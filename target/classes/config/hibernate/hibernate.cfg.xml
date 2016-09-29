@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- <property name="connection.pool_size">50</property> -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<!-- <property name="cache.provider_class">
+			org.hibernate.cache.OSCacheProvider
+		</property> -->
+		<property name="cache.provider_class">
+			net.sf.ehcache.hibernate.SingletonEhCacheProvider
+		</property>
+		<property name="cache.use_query_cache">true</property>
+
+		<property name="query.substitutions">
+			true 1, false 0, yes 'Y', no 'N'
+		</property>
+		
+		<property name="query.factory_class">
+			org.hibernate.hql.ast.ASTQueryTranslatorFactory
+		</property>
+		<property name="hibernate.query.factory_class">
+			org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory
+		</property>
+		<!-- Enable Hibernate's automatic session context management -->  
+       <!-- <property name="current_session_context_class">thread</property>   --> 
+		<!-- 配置二级缓存 -->  
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<!-- 开启查询缓存 -->  
+        <property name="hibernate.cache.use_query_cache">true</property>    
+		    
+		<!-- <property name="proxool.pool_alias">pool1</property> -->
+		<property name="jdbc.batch_size">0</property>
+		<property name="jdbc.use_streams_for_binary">true</property>
+		<property name="max_fetch_depth">1</property>
+		<mapping class="com.wondersgroup.framework.dict.bo.CodeType" />
+		<mapping class="com.wondersgroup.framework.dict.bo.CodeInfo" />
+		<mapping class="com.wondersgroup.framework.core.web.psession.bo.SessionRecord" />
+		<mapping class="com.wondersgroup.framework.core.web.psession.bo.SessionSet" />
+		<mapping class="com.wondersgroup.framework.core.logging.bo.Log" />
+		<mapping class="com.wondersgroup.framework.core.extendproperty.bo.ExtendPropertyConfig" />
+		<mapping class="com.wondersgroup.framework.security.bo.SecurityUser" />
+		<mapping class="com.wondersgroup.framework.security.bo.SecurityGroup" />
+		<mapping class="com.wondersgroup.framework.security.bo.SecurityRole" />
+		<mapping class="com.wondersgroup.framework.security.bo.UserLoginHistory" />
+		<mapping class="com.wondersgroup.framework.security.bo.UserExtendProperty" />
+		<mapping class="com.wondersgroup.framework.security.bo.ACLResource" />
+		<mapping class="com.wondersgroup.framework.security.bo.ACLOperation" />
+		<mapping class="com.wondersgroup.framework.security.bo.ACLResourceType" />
+		<mapping class="com.wondersgroup.framework.security.bo.ACLPermission" />
+		<mapping class="com.wondersgroup.framework.security.method.bo.ActionResource" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganNodeType" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganNode" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganRelationType" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganRule" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganExtendProperty" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganTree" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganModel" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganTreeType" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganizationType" />
+		<mapping class="com.wondersgroup.framework.organization.bo.OrganRelation" />
+		<mapping class="com.wondersgroup.framework.resource.bo.ResourceGroup" />
+		<mapping class="com.wondersgroup.framework.resource.bo.CustomResource" />
+		<mapping class="com.wondersgroup.framework.resource.bo.AppNode" />
+		<mapping class="com.wondersgroup.framework.console.bo.FrameWorkResource" />
+		<mapping class="com.wondersgroup.framework.view.bo.IndividualView" />
+		<mapping class="com.wondersgroup.framework.url.bo.UrlResource" />
+		<mapping class="com.wondersgroup.framework.menu.bo.ProxyInfo" />
+		<mapping class="com.wondersgroup.framework.menu.bo.MenuResource" />
+		<mapping class="com.wondersgroup.framework.bpms.pmodel.bo.BaseProcessModel" />
+		<mapping class="com.wondersgroup.framework.bpms.engine.bo.ProcessInstance" />
+		<mapping class="com.wondersgroup.framework.bpms.engine.bo.ActivityInstance" />
+		<mapping class="com.wondersgroup.framework.bpms.engine.bo.TransitionInstance" />
+		<mapping class="com.wondersgroup.framework.bpms.engine.bo.ProcessData" />
+		<mapping class="com.wondersgroup.framework.bpms.engine.bo.ContainerInstance" />
+		<mapping class="com.wondersgroup.framework.bpms.engine.logic.time.bo.TimeActivity" />
+		<mapping class="com.wondersgroup.framework.bpms.workspace.bo.WorkPerson" />
+		<mapping class="com.wondersgroup.framework.bpms.workspace.bo.WorkItem" />
+		<mapping class="com.wondersgroup.framework.bpms.paudit.bo.ActivityInstanceAuditData" />
+		<mapping class="com.wondersgroup.framework.bpms.paudit.bo.ProcessModelAuditData" />
+		<mapping class="com.wondersgroup.framework.bpms.paudit.bo.ProcessAuditConfig" />
+		<mapping class="com.wondersgroup.framework.bpms.paudit.bo.ProcessInstanceAuditData" />
+		<mapping class="com.wondersgroup.framework.bpms.paudit.bo.ProcessDataAuditData" />
+		<mapping class="com.wondersgroup.framework.bpms.paudit.bo.WorkItemAuditData" />
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+    					http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+    					http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+  
+	<!-- =================================================================== -->
+	<!-- Automatic Scan                                                      -->
+	<!-- =================================================================== -->
+	<!-- 使用annotation 自动注册bean,并保证@Required,@Autowired的属性被注入
+	<context:component-scan base-package="com.wondersgroup.pcf,com.wondersgroup.framework">
+		<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect" />
+	</context:component-scan> -->
+
+	<context:annotation-config />
+
+    <context:component-scan base-package="com.wondersgroup.pcf,com.wondersgroup.framework"/>
+    
+	<!-- =================================================================== -->
+	<!-- AOP spring3以后才有xpose-proxy="true"                               -->
+	<!-- =================================================================== -->
+	<!-- <aop:aspectj-autoproxy proxy-target-class="true"/> -->
+	
+    <aop:aspectj-autoproxy/>
+    
+    
+	<!-- 自动加载属性配置文件 -->
+	<context:property-placeholder order="2" ignore-unresolvable="false" location="
+			classpath:config/db/jdbc.properties,
+			classpath:config/common/mail.properties" />
+			
+	<!-- JNDI -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="${jndi.name}"/>
+	</bean>
+
+	<!-- 配置Hibernate的数据源代理工厂：方法一，使用p属性通配符，按文件名搜索匹配的映射文件 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource">
+		<!-- 自动装载所有bo类 -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.wondersgroup.pcf.*.model.bo</value>
+			</list>
+		</property>
+		<property name="configLocations">
+			<list>
+				<value>classpath:config/hibernate/hibernate.cfg.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- Transaction Define                                                  -->
+	<!-- =================================================================== -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- View Resolver Define                                                -->
+	<!-- =================================================================== -->
+	<bean id="beanNameViewResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1" />
+	</bean>
+
+	<bean id="internalResourceViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.InternalResourceView" />
+		<property name="order" value="2" />
+	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">   
+         <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>  
+    </bean>   
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">   
+		<property name="definitions">
+	        <list>
+				<value>/WEB-INF/tiles/tiles-base.xml</value>
+				<value>/WEB-INF/tiles/tiles-system.xml</value>
+	        </list>
+		</property>
+    </bean>
+</beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- ERROR -->
+	<definition name="staff.global.errors" extends="staff.standard.layout">
+		<put-attribute name="main" value="/WEB-INF/jsp/errors/internal_error.jsp" />
+    <put-attribute name="message" value="" />
+		<put-attribute name="menu" value="" />
+	</definition>
+	<definition name="staff.not.found" extends="staff.standard.layout">
+		<put-attribute name="main" value="/WEB-INF/jsp/errors/not_found.jsp" />
+    <put-attribute name="message" value="" />
+		<put-attribute name="menu" value="" />
+	</definition>
+  <definition name="staff.invalid.token" extends="staff.standard.layout">
+    <put-attribute name="main" value="/WEB-INF/jsp/errors/invalid.token.jsp" />
+    <put-attribute name="message" value="" />
+    <put-attribute name="menu" value="" />
+  </definition>
+  
+   <definition name="staff.system.warning" extends="staff.system.warning.layout">
+    <put-attribute name="main" value="/WEB-INF/jsp/errors/system_warning.jsp" />
+  </definition>
+   
+
+</tiles-definitions>

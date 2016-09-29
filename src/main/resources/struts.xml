@@ -4,13 +4,14 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-	<package name="autumn" extends="json-default, tiles-default" abstract="true">
+	<package name="pcf" extends="json-default, tiles-default" abstract="true">
+	
 		<!-- 自定义公共拦截器 -->
 		<interceptors>
 			<!-- 公共拦截器 -->
-			<interceptor name="commonInterceptor" class="com.wondersgroup.autumn.baseframe.interceptor.CommonInterceptor">
+			<interceptor name="commonInterceptor" class="com.wondersgroup.pcf.common.interceptor.CommonInterceptor">
 				<!-- 过滤掉登录、退出  -->
-				<param name="excludeActionName">login.login,login.check,login.logout</param>
+				<param name="excludeActionName">system.login,system.check</param>
 			</interceptor>
 			<!-- 基础拦截器栈 -->
 			<interceptor-stack name="baseStatck">
@@ -61,5 +62,7 @@
         </global-exception-mappings>  
 		
 	</package>
+	
+	<include file="config/struts2/struts-system.xml"/>
 </struts>
 

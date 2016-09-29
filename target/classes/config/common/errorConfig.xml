@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- Simple Definition -->
+	<!-- please don't remove this "default" type definition, otherwise may error happen-->
+	<error type="default" target="index.jsp" message="Custom Caption" />
+	
+	<!-- Complex Definition
+	<error type="errorType" target="page(JSP/HTML/etc)">
+		<messages>
+			<message id="msgID">
+				<![CDATA[
+					Client Caption using Rich Text
+				]]>
+			</message>
+		</messages>
+	</error>
+	 -->
+</config>

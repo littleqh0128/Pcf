@@ -1,0 +1,14 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="system" extends="pcf" namespace="/">
+		
+		<!--  登录action -->
+		<action name="system.*" class="com.wondersgroup.pcf.system.action.LoginAction" method="{1}" >
+        	<result name="login">/WEB-INF/jsp/system/login.jsp</result>
+        	<result name="input">/WEB-INF/jsp/system/login.jsp</result>
+        	<result name="success" type="tiles">tiles.system.index</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- SqlServer
+<Context path="" debug="0" reloadable="false">
+   	<Resource name="summerDataSource"
+     auth="Container" type="javax.sql.DataSource"
+      password="Wonders"
+      driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
+      maxIdle="10" maxWait="-1" 
+      username="sa" 
+      url="jdbc:sqlserver://localhost:1433;databaseName=summerTest" 
+      maxActive="50" removeAbandoned="true" removeAbandonedTimeout="180" logAbandoned="true"/> 
+</Context>
+-->
+
+<Context path="" debug="0" reloadable="false">
+   	<Resource name="pcfDataSource"
+     auth="Container" type="javax.sql.DataSource"
+      password="Wonders"
+      driverClassName="com.mysql.jdbc.Driver" 
+      maxIdle="10" maxWait="-1" 
+      username="Wonders" 
+      url="jdbc:mysql://localhost:3306/pcf" 
+      maxActive="50" removeAbandoned="true" removeAbandonedTimeout="180" logAbandoned="true"/> 
+</Context>

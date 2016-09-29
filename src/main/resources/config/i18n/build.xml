@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding='UTF-8'?>
+
+<project name="ANT工具包" default="native2ascii"  basedir=".">
+	
+	<!--源文件目录-->
+	<property name="msgsrc.dir" value="../"/>
+	<!--目标文件目录-->
+	<property name="msgdest.dir" value="../"/>
+
+	<!--取环境变量-->
+	<property environment="env"/>
+	
+	<target name="native2ascii">
+
+		<!--编译消息文件，编码方式为utf-8-->
+		<native2ascii encoding="utf-8" ext="_zh_CN.properties" src="${msgsrc.dir}" dest="${msgdest.dir}">
+			<include name="**/*.properties"/>
+			<!--以下是不编译的文件-->
+			<exclude name="**/*_zh_CN.properties"/>
+			<exclude name="**/mail.properties"/>
+			<exclude name="**/parameter.properties"/>
+			<exclude name="**/jdbc.properties"/>
+			<exclude name="**/application.properties"/>
+			<exclude name="**/log4j.properties"/>
+			<exclude name="**/struts.properties"/>
+			<exclude name="**/*.zh_CN.properties"/>
+		</native2ascii>
+		
+	</target>
+	
+</project>
