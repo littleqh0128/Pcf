@@ -1,11 +1,12 @@
 package com.wondersgroup.pcf.common.base;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
+
+import org.joda.time.DateTime;
 
 import com.wondersgroup.framework.core.bo.Removable;
 
@@ -16,26 +17,25 @@ public abstract class BaseBo implements Removable,Serializable{
 	/* 创建人 */
 	private String stCreator;
 	/* 创建时间 */
-	private Date dtCreate;
+	private DateTime dtCreate;
 	/* 创建时间 :时间段查询用到，@Transient*/
-	private Date dtCreateBegin;
+	private DateTime dtCreateBegin;
 	/* 创建时间:时间段查询时用到 @Transient*/
-	private Date dtCreateEnd;
+	private DateTime dtCreateEnd;
 	/* 最后修改人 */
 	private String stModifier;
 	/* 最后修改时间 */
-	private Date dtModify;
+	private DateTime dtModify;
 	/* 删除标志 */
 	private int removed;
 	/* 删除人 */
 	private String stRemover;
 	/* 删除时间 */
-	private Date dtRemove;
+	private DateTime dtRemove;
 	
 	public BaseBo() {
 		this.removed = 0;
-		this.dtCreate = new Date();
-		this.dtModify = new Date();
+		this.dtCreate = DateTime.now();
 	}
 
 	@Column(name = "ST_CREATOR")
@@ -48,11 +48,11 @@ public abstract class BaseBo implements Removable,Serializable{
 	}
 	
 	@Column(name = "DT_CREATE")
-	public Date getDtCreate() {
+	public DateTime getDtCreate() {
 		return dtCreate;
 	}
 
-	public void setDtCreate(Date dtCreate) {
+	public void setDtCreate(DateTime dtCreate) {
 		this.dtCreate = dtCreate;
 	}
 
@@ -66,11 +66,11 @@ public abstract class BaseBo implements Removable,Serializable{
 	}
 	
 	@Column(name = "DT_MODIFY")
-	public Date getDtModify() {
+	public DateTime getDtModify() {
 		return dtModify;
 	}
 
-	public void setDtModify(Date dtModify) {
+	public void setDtModify(DateTime dtModify) {
 		this.dtModify = dtModify;
 	}
 	
@@ -93,11 +93,11 @@ public abstract class BaseBo implements Removable,Serializable{
 	}
 	
 	@Column(name = "DT_REMOVE")
-	public Date getDtRemove() {
+	public DateTime getDtRemove() {
 		return dtRemove;
 	}
 
-	public void setDtRemove(Date dtRemove) {
+	public void setDtRemove(DateTime dtRemove) {
 		this.dtRemove = dtRemove;
 	}
 	
@@ -106,20 +106,20 @@ public abstract class BaseBo implements Removable,Serializable{
 		return this.removed == 1;
 	}
 	@Transient
-	public Date getDtCreateEnd() {
+	public DateTime getDtCreateEnd() {
 		return dtCreateEnd;
 	}
 
-	public void setDtCreateEnd(Date dtCreateEnd) {
+	public void setDtCreateEnd(DateTime dtCreateEnd) {
 		this.dtCreateEnd = dtCreateEnd;
 	}
 
 	@Transient
-	public Date getDtCreateBegin() {
+	public DateTime getDtCreateBegin() {
 		return dtCreateBegin;
 	}
 
-	public void setDtCreateBegin(Date dtCreateBegin) {
+	public void setDtCreateBegin(DateTime dtCreateBegin) {
 		this.dtCreateBegin = dtCreateBegin;
 	}
 }

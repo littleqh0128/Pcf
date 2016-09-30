@@ -1,6 +1,5 @@
 package com.wondersgroup.pcf.system.service.impl;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,7 +48,6 @@ public class LoginServiceImpl extends BaseServiceImpl implements LoginService{
 			throw new BadCredentialsException(BadCredentialsException.USER_STATUS_UNNORMAL);
 
 		// 设置返回信息
-		BeanUtils.copyProperties(sysModel.getSysUserVo(), sysUser);
-		sysModel.getSysUserVo().setStPassword(null);
+		sysModel.setSysUserVo(sysUser);
 	}
 }

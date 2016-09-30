@@ -19,7 +19,7 @@
 	<!-- end #page-loader -->
 	
 	<!-- begin #page-container -->
-	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed in page-sidebar-minified">
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
 
 		<tiles:insertAttribute name="header"/>
 		

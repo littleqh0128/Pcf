@@ -7,7 +7,7 @@
 	<div class="container-fluid">
 		<!-- begin mobile sidebar expand / collapse button -->
 		<div class="navbar-header">
-			<a href="login.index.do" class="navbar-brand"><span class="navbar-logo"></span>网上政务大厅标准化服务平台</a>
+			<a href="login.index.do" class="navbar-brand"><span class="navbar-logo"></span>个人平台</a>
 			<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>

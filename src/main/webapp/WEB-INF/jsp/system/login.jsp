@@ -14,7 +14,7 @@
 </head>
 
 <script type="text/javascript">
-	;(function() {
+	(function() {
 		"use strict";
 		require([ 'jquery', 'domReady', 'bootstrap', 'js/common/utils/forms' ],function($, domReady, bootstrap, forms) {
 			domReady(function(){

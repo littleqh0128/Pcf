@@ -1,15 +1,57 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
+<script type="text/javascript">
+	(function() {
+		"use strict";
+		require([ 'jquery', 'domReady' ],function($, domReady) {
+			domReady(function(){
+				$("a.linkMenu").click(function(){
+					menuPageJump($(this));
+				});
+			});
+		});
+	})();
+	
+	// 根据菜单id跳转
+	function pageJumpByMenuId(menuId) {
+		menuPageJump($("#"+menuId));
+	}
+	// 根据菜单code跳转
+	function pageJumpByMenuCode(menuCode) {
+		
+		$("#ulLinkMenu").find("a.linkMenu").each(function() {
+			if ($(this).attr("code") == menuCode) {
+				menuPageJump($(this));
+			}
+		});
+	}
+	// 根据菜单jquery对象跳转
+	function menuPageJump(menu) {
+		
+		var id = menu.attr("id");
+		var linkPath = menu.attr("linkPath");
+
+		if (linkPath != null && linkPath.length > 0) {
+			if (linkPath.indexOf("?") != -1)
+				linkPath += "&";
+			else
+				linkPath += "?";
+			linkPath = linkPath + "currentMenuId="+id;
+			window.location.href = linkPath;
+		}
+	}
+</script>
+
 <!-- begin #sidebar -->
-<div id="sidebar" class="sidebar sidebar-grid">
+<div id="sidebar" class="sidebar">
 	<!-- begin sidebar scrollbar -->
 	<div data-scrollbar="true" data-height="100%">
 		<!-- begin sidebar user -->
 		<ul class="nav">
 			<li class="nav-profile">
 				<div class="info">
-					欢迎：<s:property value="#session['security.login.user'].userName"/>
+					欢迎：<s:property value="#session['security.login.user'].stName"/>
 					<small><s:property value="#session['security.login.user'].organizationNodeVo.name"/></small>
 				</div>
 			</li>
@@ -69,40 +111,3 @@
 </div>
 <div class="sidebar-bg"></div>
 <!-- end #sidebar -->
-
-<script>
-	$(document).ready(function() {
-		$("[data-click=sidebar-minify]").click();
-		$("a.linkMenu").click(function(){
-			menuPageJump($(this));
-		});
-	});
-	// 根据菜单id跳转
-	function pageJumpByMenuId(menuId) {
-		menuPageJump($("#"+menuId));
-	}
-	// 根据菜单code跳转
-	function pageJumpByMenuCode(menuCode) {
-		
-		$("#ulLinkMenu").find("a.linkMenu").each(function() {
-			if ($(this).attr("code") == menuCode) {
-				menuPageJump($(this));
-			}
-		});
-	}
-	// 根据菜单jquery对象跳转
-	function menuPageJump(menu) {
-		
-		var id = menu.attr("id");
-		var linkPath = menu.attr("linkPath");
-
-		if (linkPath != null && linkPath.length > 0) {
-			if (linkPath.indexOf("?") != -1)
-				linkPath += "&";
-			else
-				linkPath += "?";
-			linkPath = linkPath + "currentMenuId="+id;
-			window.location.href = linkPath;
-		}
-	}
-</script>

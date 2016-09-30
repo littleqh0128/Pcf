@@ -509,10 +509,13 @@ App = function() {
             handleDraggablePanel(),
             handleLocalStorage(),
             handleResetLocalStorage(),
-            handleSlimScroll(),
+            handleSlimScroll(),*/
             handleSidebarMenu(),
+            /*
             handleMobileSidebarToggle(),
+            */
             handleSidebarMinify(),
+            /*
             handleMobileSidebar(),
             handleThemePageStructureControl(),
             handleThemePanelExpand(),
